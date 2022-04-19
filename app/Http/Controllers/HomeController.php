@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-
 use App\Product;
 use Illuminate\Routing\Controller;
 
@@ -11,24 +10,21 @@ class HomeController extends Controller
 
     public function index()
     {
-        $randomProduct = Product::inRandomOrder()->take(12)->get();
-        dd($randomProduct);
-        return view('Home');
+        $randomProduct = Product::inRandomOrder()->take(8)->get();
+       
+        return view('Home' , [
+         
+          'randomProduct'=> $randomProduct
+
+        ]);
     }
+
     public function contact()
     {
         return view('Contact');
     }
 
-    public function shop()
-    {
-        return view('Shop');
-    }
 
-    public function shopShow()
-    {
-        return view('ShopShow');
-    }
 
     public function cart()
     {
