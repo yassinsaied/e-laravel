@@ -1,6 +1,6 @@
 <?php
 
-
+use App\Category;
 use App\Product;
 use Faker\Factory as Faker;
 use Illuminate\Database\Seeder;
@@ -24,7 +24,8 @@ class ProductSeeder extends Seeder
                 'slug' => $faker->slug(),
                 'details' => $faker->text(200),
                 'price' => $faker->randomFloat(2, 5, 50),
-                'description' => $faker->text(500)
+                'description' => $faker->text(500),
+                'category_id' => Category::all()->random()->id
             ]);
         }
     }

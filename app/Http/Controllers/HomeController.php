@@ -1,15 +1,29 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Product;
-use Illuminate\Routing\Controller;
 
+use App\Product;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    // public function __construct()
+    // {
+    //     $this->middleware('auth');
+    // }
 
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Http\Response
+     */
     public function index()
-    {
+    {   
         $randomProduct = Product::inRandomOrder()->take(8)->get();
        
         return view('Home' , [
@@ -17,32 +31,5 @@ class HomeController extends Controller
           'randomProduct'=> $randomProduct
 
         ]);
-    }
-
-    public function contact()
-    {
-        return view('Contact');
-    }
-
-
-
-    public function cart()
-    {
-        return view('Cart');
-    }
-
-    public function checkout()
-    {
-        return view('Checkout');
-    }
-
-    public function checkoutSuccess()
-    {
-        return view('CheckoutSuccess');
-    }
-
-    public function orders()
-    {
-        return view('Orders');
     }
 }

@@ -17,6 +17,8 @@
 // Route::get('/products/create', 'ProductsController@create')->name('createProduct');
 // Route::post('/products/store', 'ProductsController@store')->name('storeProduct');
 
+use Illuminate\Support\Facades\Redirect;
+
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/contact', 'HomeController@contact')->name('contact');
 
@@ -33,3 +35,14 @@ Route::get('/checkout/success', 'HomeController@checkoutSuccess')->name('checkou
 
 //order
 Route::get('/orders', 'HomeController@orders')->name('orders');
+
+Auth::routes();
+
+Route::get('/logout' ,  function(){
+   
+     auth()->logout();
+     session()->flush();
+     return Redirect::to('/');
+
+})->name('logout');
+

@@ -3,7 +3,7 @@
         <nav class="navbar navbar-expand-lg navbar-light main_box">
             <div class="container">
                 <!-- Brand and toggle get grouped for better mobile display -->
-                <a class="navbar-brand logo_h" href="index.html"><img src="img/logo.png" alt=""></a>
+                <a class="navbar-brand logo_h" href="index.html"><img src="{{ asset('img/logo.png')}}" alt=""></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="icon-bar"></span>
@@ -26,11 +26,16 @@
 
 
                     <ul class="nav navbar-nav menu_nav ml-auto">
-                        <li class="nav-item"><a class="nav-link" href="index.html">Sign-up</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html">Login</a></li>
+                        @guest
+                            <li class="nav-item"><a class="nav-link" href="{{ route('register')}}">Register</a></li>
+                            <li class="nav-item"><a class="nav-link" href="{{ route('login')}}">Login</a></li>
+                        @else
+                            <li class="nav-item"><a class="nav-link" href="{{ route('logout')}}">Logout</a></li> 
+                        @endguest
+
                         <li class="nav-item"><a class="nav-link" href="index.html">Orders</a></li>
                         <li class="nav-item"><a class="nav-link" href="index.html">Cart</a></li>
-                        <li class="nav-item"><a class="nav-link" href="index.html">Logout</a></li>
+                  
                       
                                         
                     </ul>
